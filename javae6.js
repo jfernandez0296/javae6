@@ -14,4 +14,18 @@ const enrollments = [
   { course_id: 2, student_id: 2 }
 ]
 
-console.log(courses.title[1])
+//Primer ejercicio
+console.log("-"+courses[0].title)
+console.log("*"+students[0].name)
+console.log("-"+courses[1].title)
+console.log("*"+students[0].name)
+console.log("*"+students[1].name)
+console.log("--------------------------")
+
+
+//Segundo ejercicio
+console.log("-"+students[0].name)
+console.log("*"+courses[0].title)
+console.log("*"+courses[1].title)
+console.log("-"+students[1].name)
+console.log("*"+courses[1].title)
