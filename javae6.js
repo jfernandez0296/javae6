@@ -1,31 +1,41 @@
 const courses = [
   { _id: 1, title: "JavaScript I" },
   { _id: 2, title: "HTML y CSS I" },
-]
+];
 
 const students = [
   { _id: 1, name: "Pedro Perez" },
   { _id: 2, name: "Maria Gomez" },
-]
+];
 
 const enrollments = [
   { course_id: 1, student_id: 1 },
   { course_id: 2, student_id: 1 },
-  { course_id: 2, student_id: 2 }
-]
+  { course_id: 2, student_id: 2 },
+];
 
-//Primer ejercicio
-console.log("-"+courses[0].title)
-console.log("*"+students[0].name)
-console.log("-"+courses[1].title)
-console.log("*"+students[0].name)
-console.log("*"+students[1].name)
-console.log("--------------------------")
+// Imprimir los cursos y los estudiantes de cursos
+courses.forEach((course) => {
+  console.log(`- ${course.title}`);
+  const enrolledStudents = enrollments
+    .filter((enrollment) => enrollment.course_id === course._id)
+    .map((enrollment) => {
+      const student = students.find((student) => student._id === enrollment.student_id);
+      return `  * ${student.name}`;
+    });
+  console.log(enrolledStudents.join("\n"));
+});
 
+console.log("");
 
-//Segundo ejercicio
-console.log("-"+students[0].name)
-console.log("*"+courses[0].title)
-console.log("*"+courses[1].title)
-console.log("-"+students[1].name)
-console.log("*"+courses[1].title)
+// Imprimir los estudiantes y los cursos a los que están matriculados
+students.forEach((student) => {
+  console.log(`- ${student.name}`);
+  const enrolledCourses = enrollments
+    .filter((enrollment) => enrollment.student_id === student._id)
+    .map((enrollment) => {
+      const course = courses.find((course) => course._id === enrollment.course_id);
+      return `  * ${course.title}`;
+    });
+  console.log(enrolledCourses.join("\n"));
+});
